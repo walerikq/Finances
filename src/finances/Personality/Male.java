@@ -1,15 +1,13 @@
 package finances.Personality;
 
-import finances.Personality.Person;
-
-public class Kate extends Person {
+public class Male extends Person {
 
     private int income;
     private int expense;
     private boolean sex;
 
-    public Kate(int income,int expense){
-        super(expense,income, false);
+    public Male(int income, int expense){
+        super(expense,income,true);
 
     }
 
@@ -17,5 +15,4 @@ public class Kate extends Person {
     public void spendingMoney() {
 
     }
-
 }

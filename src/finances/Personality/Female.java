@@ -2,14 +2,15 @@ package finances.Personality;
 
 import finances.Personality.Person;
 
-public class Walera extends Person {
+public class Female extends Person {
 
     private int income;
     private int expense;
+
     private boolean sex;
 
-    public Walera(int income,int expense){
-        super(expense,income,true);
+    public Female(int income,int expense){
+        super(expense,income, false);
 
     }
 
@@ -17,4 +18,5 @@ public class Walera extends Person {
     public void spendingMoney() {
 
     }
+
 }
