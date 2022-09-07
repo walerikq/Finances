@@ -4,11 +4,13 @@ public class Account {
     private int score;
     private int expence;
     private int income;
+    private String name;
 
-    public Account(int score,int expence, int income){
+    public Account(int score, int expence, int income, String name){
         this.expence = expence;
         this.score = score;
         this.income = income;
+        this.name = name;
     }
 
     public int getExpence() {
@@ -37,10 +39,7 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Счёт" +
-                "score=" + score +
-                ", expence=" + expence +
-                ", income=" + income +
-                '}';
+        return "Счёт: " + name + " | " +
+                "Баланс " + score;
     }
 }

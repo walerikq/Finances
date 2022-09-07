@@ -1,17 +1,20 @@
 package finances;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
+
 public class Finances {
 //    final static File file = new File("accounts.txt");
+    static ArrayList<Account> accounts = new ArrayList<>();
+    static Account account1;
+    static Account contributionAccount;
 
     public static void main(String[] args) {
-        ArrayList<Account> accounts = new ArrayList<>();
-        Account account1 = new Account(0,0,0);
-        Account contributionAccount = new Account(0,0,0);
+        account1 = new Account(0,0,0, "Рублёвый");
+        contributionAccount = new Account(0,0,0, "Вклад");
         accounts.add(0,account1);
         accounts.add(1,contributionAccount);
         menu(accounts);
@@ -35,7 +38,7 @@ public class Finances {
                 case 0:
                     System.exit(0);
                 case 1:
-
+                    selectAccount();
                 case 2:
 
                 case 3:
@@ -60,6 +63,29 @@ public class Finances {
             System.out.println(i + ". " + f);
             i++;
         }
+    }
+/** Возможнос стоит сделать вывод сразу баланса каждого счёта */
+    static int selectAccount() {
+        System.out.println("Выберите счёт: ");
+        System.out.println("1 - Рублёвый.Основной");
+        System.out.println("2 - Вклад");
+
+        int accountScore;
+        Scanner in = new Scanner(System.in);
+        int num = in.nextInt();
+        switch (num) {
+            case 1:
+                accountScore = account1.getScore();
+                break;
+            case 2:
+                accountScore = contributionAccount.getScore();
+                break;
+
+            default:
+                System.out.println("Введите правильное значение");
+                return selectAccount();
+        }
+        return accountScore;
     }
 
 
