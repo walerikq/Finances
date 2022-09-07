@@ -12,15 +12,15 @@ public class Finances {
     static Account account1;
     static Account contributionAccount;
 
-    public static void main(String[] args) {
-        account1 = new Account(0,0,0, "Рублёвый");
-        contributionAccount = new Account(0,0,0, "Вклад");
+    public static void main(String[] args) throws InterruptedException {
+        account1 = new Account(70000,0,32000, "Рублёвый");
+        contributionAccount = new Account(100000,45325,0, "Вклад");
         accounts.add(0,account1);
         accounts.add(1,contributionAccount);
         menu(accounts);
     }
 
-    public static void menu(List<Account> list) {
+    public static void menu(List<Account> list) throws InterruptedException {
         Scanner in = new Scanner(System.in);
         while (true) {
             System.out.println("Выберите нужный пункт меню:");
@@ -38,7 +38,9 @@ public class Finances {
                 case 0:
                     System.exit(0);
                 case 1:
-                    selectAccount();
+                    System.out.println(selectAccount().getScore() + "\n");
+                    Thread.sleep(1000);
+                    break;
                 case 2:
 
                 case 3:
@@ -51,6 +53,7 @@ public class Finances {
 
                 case 7:
                     printFigures(list);
+                    break;
             }
         }
     }
@@ -65,27 +68,26 @@ public class Finances {
         }
     }
 /** Возможнос стоит сделать вывод сразу баланса каждого счёта */
-    static int selectAccount() {
+    static Account selectAccount() {
         System.out.println("Выберите счёт: ");
-        System.out.println("1 - Рублёвый.Основной");
+        System.out.println("1 - Основной");
         System.out.println("2 - Вклад");
 
-        int accountScore;
+        Account accountChoise;
         Scanner in = new Scanner(System.in);
         int num = in.nextInt();
         switch (num) {
             case 1:
-                accountScore = account1.getScore();
+                accountChoise = account1;
                 break;
             case 2:
-                accountScore = contributionAccount.getScore();
+                accountChoise = contributionAccount;
                 break;
-
             default:
                 System.out.println("Введите правильное значение");
                 return selectAccount();
         }
-        return accountScore;
+        return accountChoise;
     }
 
 
